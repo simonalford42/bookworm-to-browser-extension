@@ -148,3 +148,44 @@ ax.set_ylim(0, 25)
 plt.tight_layout()
 plt.savefig('citation_analysis.png', dpi=150, bbox_inches='tight')
 print("Saved citation_analysis.png")
+
+# ── Mobile version: just the two new plots, stacked vertically ───────────
+fig2, (ax3, ax4) = plt.subplots(2, 1, figsize=(6, 10))
+
+# Plot 3 again
+ax3.hist(book_ages,    bins=bins, density=True, alpha=0.6, color=COLORS['book'],
+         label=f'Books (n={len(book_ages):,})')
+ax3.hist(article_ages, bins=bins, density=True, alpha=0.6, color=COLORS['article'],
+         label=f'Articles (n={len(article_ages):,})')
+ax3.axvline(book_mean,    color=COLORS['book'],    linestyle='--', linewidth=1.5,
+            label=f'Book mean: {book_mean:.1f} yrs')
+ax3.axvline(article_mean, color=COLORS['article'], linestyle='--', linewidth=1.5,
+            label=f'Article mean: {article_mean:.1f} yrs')
+ax3.set_title('Age of Cited Works at Time of Citation')
+ax3.set_xlabel('Years since publication')
+ax3.set_ylabel('Density')
+ax3.legend(fontsize=9)
+ax3.grid(axis='y', alpha=0.3)
+ax3.set_xlim(0, 54)
+
+# Plot 4 again
+ax4.plot(YEARS, mean_age_book,    marker='s', color=COLORS['book'],    linewidth=2, label='Books')
+ax4.plot(YEARS, mean_age_article, marker='o', color=COLORS['article'], linewidth=2, label='Articles')
+for x, y in zip(YEARS, mean_age_book):
+    ax4.annotate(f'{y:.1f}', (x, y), textcoords='offset points', xytext=(0, 7), ha='center', fontsize=8)
+for x, y in zip(YEARS, mean_age_article):
+    ax4.annotate(f'{y:.1f}', (x, y), textcoords='offset points', xytext=(0, -13), ha='center', fontsize=8)
+ax4.set_title('Mean Age of Cited Work at Time of Citation')
+ax4.set_ylabel('Mean age (years)')
+ax4.set_xticks(YEARS)
+ax4.tick_params(axis='x', labelrotation=45)
+ax4.legend()
+ax4.grid(axis='y', alpha=0.3)
+ax4.set_ylim(0, 25)
+
+fig2.suptitle('How Old Are the Works Cited in Political Science?\n'
+              'Data: Yanus & Ardoin (2026), 50,453 citations, 1990–2024',
+              fontsize=11, y=1.01)
+fig2.tight_layout()
+fig2.savefig('citation_age_analysis.png', dpi=150, bbox_inches='tight')
+print("Saved citation_age_analysis.png")
