@@ -27,12 +27,12 @@ The large file `Journal_Data_Final.xlsx` (~4.5MB, reference-level data) is downl
 
 ## Plots
 
-![Citation age analysis](citation_age_analysis.png)
+![Citation analysis](citation_analysis.png)
 
-**Top:** Age distribution of cited books vs. articles at time of citation. Books have a much fatter right tail — more citations going to works 20–50 years old.  
-**Bottom:** Mean age of cited work over time. The gap between books and articles is widening — cited books are getting older (14→19.5 years) while article citation age is more stable (10→13 years).
-
-The full 2×2 grid including the paper's replicated figures is in [citation_analysis.png](citation_analysis.png).
+**Top left:** Replication of Figure 1 — share of references by type, 1990–2024.  
+**Top right:** Replication of Figure 2 — % journal article references by subfield (Political Theory is a notable outlier).  
+**Bottom left:** Age distribution of cited books vs. articles at time of citation. Books have a much fatter right tail.  
+**Bottom right:** Mean age of cited work over time. The gap between books and articles is widening.
 
 ## Requirements
 
